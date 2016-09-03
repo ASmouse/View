@@ -1,0 +1,67 @@
+package com.itheima14.toggledemo14;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+
+public class ToggleView extends View {
+
+	private Bitmap mBitmapBackgroud;
+	private Bitmap mBitmapButton;
+	private Paint mPaint;
+
+	public ToggleView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+		initView();
+		
+		mPaint = new Paint();
+	}
+
+	private void initView() {
+		//获取两张图片
+		//按钮的背景图片
+		mBitmapBackgroud = BitmapFactory.decodeResource(getResources(), R.drawable.switch_background);
+		
+		//滑块
+		mBitmapButton = BitmapFactory.decodeResource(getResources(), R.drawable.slide_button_background);
+		
+	}
+
+	public ToggleView(Context context) {
+		this(context,null);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		//控件的大小  为 背景图片的大小
+		setMeasuredDimension(mBitmapBackgroud.getWidth(), mBitmapBackgroud.getHeight());
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		// 添加触摸事件
+		
+		
+		
+		return true;//自己消费掉事件
+	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		
+		//绘制背景
+		canvas.drawBitmap(mBitmapBackgroud, 0, 0, mPaint );
+		
+		//绘制button
+		canvas.drawBitmap(mBitmapButton, 0, 0, mPaint);
+		super.onDraw(canvas);
+	}
+
+}

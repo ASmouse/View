@@ -1,0 +1,128 @@
+package com.itheima14.slidingremovedemo14;
+
+import android.content.Context;
+import android.support.v4.widget.ViewDragHelper;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class SlidingRemoveView extends ViewGroup {
+
+	private View content_tv;
+	private View delete_tv;
+	private int mcontent_height;
+	private int mdelete_width;
+	private int mdelete_height;
+	private ViewDragHelper mViewDragHelper;
+
+	public SlidingRemoveView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+		
+		mViewDragHelper = ViewDragHelper.create(this, new MyCallBack());
+		
+	}
+	
+	private class MyCallBack extends ViewDragHelper.Callback{
+
+		@Override
+		public boolean tryCaptureView(View child, int pointerId) {
+			// 分享子控件 
+System.out.println(child);	
+
+			return true;
+		}
+		
+		
+
+		@Override
+		public int clampViewPositionVertical(View child, int top, int dy) {
+//System.out.println("clampViewPositionVertical" + child + ":");	
+			return super.clampViewPositionVertical(child, top, dy);
+		}
+
+
+
+		//水平方向的移动
+		@Override
+		public int clampViewPositionHorizontal(View child, int left, int dx) {
+			//child 移动子控件
+			//left 》 child 的left的坐标 
+			// dx 相对移动值
+System.out.println("clampViewPositionHorizontal" + child + ":" + left);			
+			return left;
+		}
+		
+		
+		
+		
+		
+		
+
+	
+		
+	}
+
+	public SlidingRemoveView(Context context) {
+		this(context,null);
+		// TODO Auto-generated constructor stub
+		
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		// TODO Auto-generated method stub
+		//把touch事件绑定到ViewDragHelper
+		mViewDragHelper.processTouchEvent(event);
+		return super.onTouchEvent(event);
+	}
+	
+	@Override
+	protected void onFinishInflate() {
+		//布局解析完成的回调
+		
+		content_tv = getChildAt(0);
+		delete_tv = getChildAt(1);
+		
+System.out.println("content_tv:" + content_tv);		
+System.out.println("delete_tv:" + delete_tv);
+
+		mcontent_height = content_tv.getLayoutParams().height;
+		mdelete_width = delete_tv.getLayoutParams().width;
+		mdelete_height = delete_tv.getLayoutParams().height;
+		super.onFinishInflate();
+	}
+	
+	//1.messure
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		//1. 测量content
+		//模式 +　大小
+		int content_heightMeasureSpec = MeasureSpec.makeMeasureSpec(mcontent_height, MeasureSpec.EXACTLY);
+		content_tv.measure(widthMeasureSpec, content_heightMeasureSpec);
+		
+		
+		//2. 测量delete
+		int delete_widthMeasureSpec = MeasureSpec.makeMeasureSpec(mdelete_width, MeasureSpec.EXACTLY);
+		int delete_heightMeasureSpec = MeasureSpec.makeMeasureSpec(mdelete_height,MeasureSpec.EXACTLY);
+		
+		delete_tv.measure(delete_widthMeasureSpec, delete_heightMeasureSpec);
+		
+		//3. 设置大小
+		setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), mcontent_height);
+	}
+
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		//1. 布局内容
+		int dx = 100;
+		//1. content
+		content_tv.layout(0 - dx, 0, content_tv.getMeasuredWidth() - dx, content_tv.getMeasuredHeight());
+		//2. delete
+		delete_tv.layout(content_tv.getMeasuredWidth() - dx, 0, content_tv.getMeasuredWidth() + delete_tv.getMeasuredWidth() - dx, 
+				delete_tv.getMeasuredHeight());
+
+	}
+
+}

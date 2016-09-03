@@ -1,0 +1,20 @@
+package com.itheima14.eventdemo;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.FrameLayout;
+
+public class ViewGroupOne extends FrameLayout {
+
+	public ViewGroupOne(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ViewGroupOne(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+}

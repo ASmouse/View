@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dip"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/menu_bg"
+        android:orientation="vertical" >
+
+        <TextView
+            android:padding="20dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/tab_news"
+            android:gravity="center_vertical"
+            android:text="新闻"
+            android:textColor="#ffffff"
+            android:textSize="22sp" >
+        </TextView>
+"
+    </LinearLayout>
+
+</ScrollView>

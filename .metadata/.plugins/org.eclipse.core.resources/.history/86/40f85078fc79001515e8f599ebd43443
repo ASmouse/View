@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <!-- uku菜单的第一层 -->
+
+    <RelativeLayout
+        android:layout_width="105dip"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/level1" >
+
+        <!-- home键 -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dip"
+            android:src="@drawable/icon_home" />
+    </RelativeLayout>
+
+    <!-- uku菜单第二层 -->
+
+    <RelativeLayout
+        android:layout_width="190dip"
+        android:layout_height="90dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/level2" >
+
+        <!-- 搜索 -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="8dip"
+            android:src="@drawable/icon_search" />
+
+        <!-- 菜单 -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dip"
+            android:src="@drawable/icon_menu" />
+
+        <!-- 优酷菜单 -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dip"
+            android:layout_marginTop="3dip"
+            android:src="@drawable/icon_myyouku" />
+    </RelativeLayout>
+
+    <!-- uku菜单第三层 -->
+
+    <RelativeLayout
+        android:layout_width="290dip"
+        android:layout_height="140dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/level3" >
+
+        <!-- 第一个按钮 -->
+
+        <ImageView
+            android:id="@+id/channel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dip"
+            android:src="@drawable/channel1" />
+
+        <!-- 第四个按钮 -->
+
+        <ImageView
+            android:id="@+id/channel4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip"
+            android:src="@drawable/channel4" />
+
+        <!-- 第七个按钮 -->
+
+        <ImageView
+            android:id="@+id/channel7"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="5dip"
+            android:layout_width="wrap_content"
+            android:src="@drawable/channel7" />
+
+        <!-- 第二个按钮 -->
+
+        <ImageView
+            android:layout_marginLeft="20dip"
+            android:layout_above="@id/channel1"
+            
+            android:layout_marginBottom="25dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           
+            android:src="@drawable/channel2" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+1445760952661	Copy file
+1445761228951	Convert local variable 'content_tv' to field
+1445761231087	Convert local variable 'delete_tv' to field
+1445761313031	Convert local variable 'mcontent_height' to field
+1445761315111	Convert local variable 'mdelete_width' to field
+1445761317520	Convert local variable 'mdelete_height' to field
+1445762364028	Convert local variable 'mViewDragHelper' to field
+1445767934795	Extract method 'initLocation'
+1445768507587	Rename resource 'activity_main.xml'
+1445768678624	Convert local variable 'mAdapter' to field
+1445768686912	Convert local variable 'lv_test' to field

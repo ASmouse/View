@@ -1,0 +1,11 @@
+1445656541817	Convert local variable 'iv_menu' to field
+1445656543909	Convert local variable 'iv_home' to field
+1445656624214	Convert local variable 'rl_level1' to field
+1445656627968	Convert local variable 'rl_level2' to field
+1445656632679	Convert local variable 'rl_level3' to field
+1445666515879	Extract method 'closeLevel'
+1445669200647	Copy file
+1445669256565	Copy compilation unit
+1445669597837	Copy compilation unit
+1445669616279	Copy files
+1445669627723	Copy file

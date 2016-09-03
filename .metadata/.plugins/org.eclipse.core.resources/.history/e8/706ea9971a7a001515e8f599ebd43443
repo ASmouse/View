@@ -1,0 +1,24 @@
+package com.itheima14.ukudemo14;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.RelativeLayout;
+
+/**
+ * Uku菜单的View
+ * @author Administrator
+ *
+ */
+public class UkuMenuView extends RelativeLayout {
+
+	public UkuMenuView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// 布局文件
+	}
+
+	public UkuMenuView(Context context) {
+		super(context);
+		//代码调用 
+	}
+
+}

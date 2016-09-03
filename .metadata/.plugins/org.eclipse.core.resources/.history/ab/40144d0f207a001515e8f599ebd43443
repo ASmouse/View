@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <!-- RelativeLayout -->
+
+    <RelativeLayout
+        android:layout_margin="5dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- EditText -->
+
+        <EditText
+            android:background="@drawable/black_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <!-- arrow -->
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/down_arrow" />
+    </RelativeLayout>
+
+</RelativeLayout>

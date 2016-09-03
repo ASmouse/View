@@ -1,0 +1,13 @@
+package com.itheima14.eventdemo;
+
+import android.view.ViewGroup;
+
+public class ViewGroupTwo extends ViewGroup {
+
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

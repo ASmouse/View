@@ -1,0 +1,39 @@
+package com.itheima14.ukudemo14;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+/**
+ * Uku菜单的View
+ * @author Administrator
+ *
+ */
+public class UkuMenuView extends RelativeLayout {
+	
+	
+	public UkuMenuView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// 布局文件
+		// 初始化界面
+		initView();
+
+		
+		
+		//初始化事件
+		initEvent();
+	}
+
+	public UkuMenuView(Context context) {
+		this(context,null);
+		//代码调用 
+	}
+
+}

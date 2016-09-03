@@ -1,0 +1,11 @@
+1445739415346	Convert local variable 'left_View' to field
+1445739417387	Convert local variable 'content_View' to field
+1445740193219	Convert local variable 'mLeft_View_Width' to field
+1445742621884	Convert local variable 'mDownX' to field
+1445752853680	Extract method 'touchMove'
+1445753615633	Convert local variable 'mScroller' to field
+1445758411438	Convert local variable 'downX' to field
+1445758414754	Convert local variable 'downY' to field
+1445759170360	Convert local variable 'downTime' to field
+1445759798914	Convert local variable 'tv_content' to field
+1445759896660	Convert local variable 'smv_test' to field

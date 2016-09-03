@@ -1,0 +1,140 @@
+package com.itheima14.spinnerdemo14;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+	private EditText et_number;
+	private ImageView iv_arrow;
+	private PopupWindow pw_numbers;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		initView();
+		
+		initPopupWindow();
+		initEvent();
+	}
+
+	private class MyAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 100;
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			TextView tv = new TextView(getApplicationContext());
+			tv.setText("测试" + position);
+			return tv;
+		}
+		
+	}
+	/**
+	 * 初始化弹出窗体
+	 */
+	private void initPopupWindow() {
+		
+		//listView来显示号码 
+		ListView contentView = new ListView(this);
+		MyAdapter myAdapter = new MyAdapter();
+		contentView.setAdapter(myAdapter);
+		
+		//-2包裹内容
+		
+		pw_numbers = new PopupWindow(contentView , -2, 180);
+		
+		pw_numbers.setFocusable(true);//获取焦点
+		//设置透明背景
+		pw_numbers.setBackgroundDrawable(new ColorDrawable(Color.RED));
+		pw_numbers.setOutsideTouchable(true);//pw 外部点击关闭
+		
+		
+		
+		
+	}
+	
+	private void showPW(){
+		if (pw_numbers != null && pw_numbers.isShowing()) {
+			//显示， 关闭
+			pw_numbers.dismiss();
+		} else {
+			//关闭， 显示
+			//弹出窗体显示在et下方
+			//设置宽度
+			//获取et宽度
+			// 测量
+	
+			et_number.measure(0, 0);
+
+
+
+			//获取测量后的宽度
+			pw_numbers.setWidth(et_number.getMeasuredWidth());
+			pw_numbers.showAsDropDown(et_number);
+			
+		}
+	}
+
+	private void initEvent() {
+		//给监听添加单击事件
+		iv_arrow.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//弹出窗体显示号码列表
+				showPW();
+			}
+		});
+		
+	}
+
+	private void initView() {
+		setContentView(R.layout.activity_main);
+		
+		et_number = (EditText) findViewById(R.id.et_number);
+		
+		iv_arrow = (ImageView) findViewById(R.id.iv_arrow);
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}

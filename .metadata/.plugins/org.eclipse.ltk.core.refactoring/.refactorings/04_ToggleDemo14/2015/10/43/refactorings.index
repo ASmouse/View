@@ -1,0 +1,4 @@
+1445676770486	Convert local variable 'mBitmapBackgroud' to field
+1445676818920	Convert local variable 'mBitmapButton' to field
+1445676989421	Convert local variable 'mPaint' to field
+1445677726927	Convert local variable 'downX' to field

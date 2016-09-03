@@ -1,0 +1,185 @@
+package com.itheima14.ukudemo14;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+public class MainActivity extends Activity {
+
+	private ImageView iv_menu;
+	private ImageView iv_home;
+	private RelativeLayout rl_level1;
+	private RelativeLayout rl_level2;
+	private RelativeLayout rl_level3;
+
+	// 记录level3显示或隐藏的状态
+	private boolean isLevel3Show = true;
+
+	// 记录level2显示或隐藏的状态
+	private boolean isLevel2Show = true;
+
+	// 记录level1显示或隐藏的状态
+	private boolean isLevel1Show = true;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		initView();
+
+		initEvent();
+
+	}
+
+	private void initEvent() {
+
+		OnClickListener listener = new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				switch (v.getId()) {
+				case R.id.iv_home:
+					// home菜单
+					homeClick();
+					break;
+
+				case R.id.iv_menu:
+					// menu菜单
+					menuClick();
+					break;
+
+				default:
+					break;
+				}
+
+			}
+		};
+		// 初始化事件
+		// 1. 给menu菜单添加点击事件
+		iv_menu.setOnClickListener(listener);
+		// 2. 给home菜单添加事件
+		iv_home.setOnClickListener(listener);
+	}
+
+	/**
+	 * 关闭层的动画
+	 */
+	private void closeLevel(RelativeLayout rl_level) {
+		RotateAnimation ra = new RotateAnimation(0, -180,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				1f);
+
+		ra.setDuration(500);// 动画的时间
+		ra.setFillAfter(true);// 动画停留结束的位置
+
+		// iv完成动画
+		rl_level.startAnimation(ra);
+	}
+
+	/**
+	 * 打开层的动画
+	 */
+	private void openLevel(RelativeLayout rl_level) {
+
+		// 记录打开状态
+		switch (rl_level.getId()) {
+		case R.id.rl_level1:
+			isLevel1Show = true;
+			break;
+
+		default:
+			break;
+		}
+		RotateAnimation ra = new RotateAnimation(-180, 0,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				1f);
+
+		ra.setDuration(500);// 动画的时间
+		ra.setFillAfter(true);// 动画停留结束的位置
+
+		// iv完成动画
+		rl_level.startAnimation(ra);
+	}
+
+	/**
+	 * menu菜单事件功能
+	 */
+	protected void menuClick() {
+		/**
+		 * 让第三层菜单显示或隐藏
+		 * 
+		 */
+		isLevel3Show = !isLevel3Show;
+
+		if (isLevel3Show) {
+			// rl_level3.setVisibility(View.VISIBLE);
+
+			// 显示动画
+			// 隐藏的动画
+			openLevel(rl_level3);
+
+		} else {
+			// rl_level3.setVisibility(View.GONE);
+			// 隐藏的动画
+			closeLevel(rl_level3);
+
+		}
+	}
+
+	/**
+	 * home菜单的事件功能
+	 */
+	protected void homeClick() {
+		/*
+		 * 控制第二层和第三层的操作 1. 如果都不显示，只打开第二层 2. 如果都显示，都关闭 3. 如果第二层显示，第二层关闭
+		 */
+
+		if (!isLevel2Show && !isLevel3Show) {// 1. 如果都不显示
+
+			// 只打开第二层
+			openLevel(rl_level2);
+		} else if (isLevel2Show && isLevel3Show) {// 如果都显示
+			// 都关闭
+			closeLevel(rl_level2);
+			closeLevel(rl_level3);
+		} else if (isLevel2Show) {
+			// 第二层关闭
+			closeLevel(rl_level2);
+		}
+
+	}
+
+	private void initView() {
+		setContentView(R.layout.activity_main);
+
+		// 1. 获取home键
+		iv_home = (ImageView) findViewById(R.id.iv_home);
+
+		// 2. 获取menu键
+		iv_menu = (ImageView) findViewById(R.id.iv_menu);
+
+		// 3. 获取第一个层
+		rl_level1 = (RelativeLayout) findViewById(R.id.rl_level1);
+
+		// 3. 获取第二个层
+		rl_level2 = (RelativeLayout) findViewById(R.id.rl_level2);
+
+		// 3. 获取第三个层
+		rl_level3 = (RelativeLayout) findViewById(R.id.rl_level3);
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
